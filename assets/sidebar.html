@@ -1,0 +1,86 @@
+<!-- 사이드바 -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    
+    <!-- 네비게이션 메뉴 제거됨 -->
+
+    <div class="sidebar-filters">
+        <h4>필터</h4>
+        <div class="sidebar-filter-group">
+            <label for="sidebarGenreFilter">장르</label>
+            <select id="sidebarGenreFilter">
+                <option value="">전체</option>
+                <option value="액션">액션</option>
+                <option value="드라마">드라마</option>
+                <option value="코미디">코미디</option>
+                <option value="스릴러">스릴러</option>
+                <option value="로맨스">로맨스</option>
+                <option value="SF">SF</option>
+                <option value="공포">공포</option>
+            </select>
+        </div>
+        <div class="sidebar-filter-group">
+            <label for="sidebarRatingFilter">평점</label>
+            <select id="sidebarRatingFilter">
+                <option value="">전체</option>
+                <option value="9">9점 이상</option>
+                <option value="8">8점 이상</option>
+                <option value="7">7점 이상</option>
+                <option value="6">6점 이상</option>
+            </select>
+        </div>
+        <div class="sidebar-filter-group">
+            <label for="sidebarSortBy">정렬</label>
+            <select id="sidebarSortBy">
+                <option value="latest">최신순</option>
+                <option value="rating">평점순</option>
+                <option value="title">제목순</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="sidebar-shortcuts">
+        <h4>단축키</h4>
+        <div class="shortcut-item">
+            <div class="shortcut-key">
+                <kbd>Ctrl</kbd> + <kbd>K</kbd>
+            </div>
+            <div class="shortcut-description">
+                <i class="fas fa-search"></i>
+                <span>검색</span>
+            </div>
+        </div>
+        <div class="shortcut-item">
+            <div class="shortcut-key">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="shortcut-description">
+                <i class="fas fa-times"></i>
+                <span>닫기</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-user">
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-details">
+                <span class="user-name">게스트</span>
+                <span class="user-status">로그인</span>
+            </div>
+        </div>
+        <button class="sidebar-login-btn" id="sidebarLoginBtn">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>로그인</span>
+        </button>
+    </div>
+</aside>
+
+<!-- 사이드바 오버레이 (모바일용) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>

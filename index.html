@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeekFlex - 영화 리뷰</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- TMDB API 키 입력 모달 -->
+    <div id="apiKeyModal" class="modal">
+      <div class="modal-content">
+        <div class="api-key-header">
+          <h2>TMDB API 키 설정</h2>
+        </div>
+        <div class="api-key-container">
+          <p class="api-key-description">
+            GeekFlex를 사용하려면 TMDB API 키가 필요합니다.<br />
+            <a
+              href="https://www.themoviedb.org/settings/api"
+              target="_blank"
+              rel="noopener noreferrer"
+              >TMDB 웹사이트</a
+            >에서 무료 API 키를 발급받으세요.
+          </p>
+          <div class="api-key-input-group">
+            <label for="apiKeyInput">API 키</label>
+            <input
+              type="text"
+              id="apiKeyInput"
+              placeholder="TMDB API 키를 입력하세요"
+              autocomplete="off"
+            />
+            <small class="api-key-error" id="apiKeyError"></small>
+          </div>
+          <div class="api-key-actions">
+            <button class="api-key-btn primary" id="saveApiKeyBtn">
+              <i class="fas fa-save"></i>
+              <span>저장하고 시작하기</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 검색 모달 -->
+    <div id="searchModal" class="modal">
+      <div class="modal-content">
+        <div class="search-header">
+          <h2>영화 검색</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="영화 제목, 감독, 배우로 검색..."
+          />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 헤더 -->
+    <div data-include-path="./assets/header.html"></div>
+
+    <!-- 사이드바 -->
+    <div data-include-path="./assets/sidebar.html"></div>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main">
+      <!-- 컨테이너 -->
+      <div class="container">
+        <!-- 필터 섹션 -->
+        <div class="filters">
+          <!-- 장르 필터 -->
+          <div class="filter-group">
+            <label for="genreFilter">장르</label>
+            <select id="genreFilter">
+              <option value="">전체</option>
+              <option value="액션">액션</option>
+              <option value="드라마">드라마</option>
+              <option value="코미디">코미디</option>
+              <option value="스릴러">스릴러</option>
+              <option value="로맨스">로맨스</option>
+              <option value="SF">SF</option>
+              <option value="공포">공포</option>
+            </select>
+          </div>
+          <!-- 평점 필터 -->
+          <div class="filter-group">
+            <label for="ratingFilter">평점</label>
+            <select id="ratingFilter">
+              <option value="">전체</option>
+              <option value="9">9점 이상</option>
+              <option value="8">8점 이상</option>
+              <option value="7">7점 이상</option>
+              <option value="6">6점 이상</option>
+            </select>
+          </div>
+          <!-- 정렬 필터 -->
+          <div class="filter-group">
+            <label for="sortBy">정렬</label>
+            <select id="sortBy">
+              <option value="latest">최신순</option>
+              <option value="rating">평점순</option>
+              <option value="title">제목순</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 영화 리뷰 그리드 -->
+        <div class="movies-container" id="moviesContainer">
+          <!-- 영화 카드들이 여기에 동적으로 생성됩니다 -->
+        </div>
+
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+          <!-- 이전 페이지 버튼 -->
+          <button class="page-btn" id="prevPage" disabled>
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <!-- 페이지 번호 -->
+          <div class="page-numbers" id="pageNumbers"></div>
+          <!-- 다음 페이지 버튼 -->
+          <button class="page-btn" id="nextPage">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- 푸터 -->
+    <div data-include-path="./assets/footer.html"></div>
+
+    <!-- JavaScript 모듈들 -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

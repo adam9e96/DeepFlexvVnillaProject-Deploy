@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekFlex - 회원가입</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="signup-body">
+    <!-- 회원가입 컨테이너 -->
+    <div class="signup-container">
+        <div class="signup-card">
+            <!-- 로고 섹션 -->
+            <div class="signup-header">
+                <div class="signup-logo">
+                    <h1>GeekFlex</h1>
+                    <p class="signup-subtitle">영화 리뷰 플랫폼</p>
+                </div>
+                <p class="signup-description">영화 애호가들을 위한 완벽한 플랫폼에 가입하세요</p>
+            </div>
+
+            <!-- 회원가입 폼 -->
+            <form class="signup-form" id="signupForm" enctype="multipart/form-data">
+                <!-- 기본 정보 섹션 -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-user"></i>
+                        기본 정보
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="userId" class="form-label">
+                            <i class="fas fa-id-card"></i>
+                            아이디 *
+                        </label>
+                        <input type="text" id="userId" name="userId" class="form-input" placeholder="영문, 숫자 4-20자" required>
+                        <div class="form-error" id="userIdError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userName" class="form-label">
+                            <i class="fas fa-user-circle"></i>
+                            닉네임 *
+                        </label>
+                        <input type="text" id="userName" name="userName" class="form-input" placeholder="표시될 이름" required>
+                        <div class="form-error" id="userNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            이메일 *
+                        </label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="이메일 주소" required>
+                        <div class="form-error" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i>
+                            비밀번호 *
+                        </label>
+                        <div class="password-input-container">
+                            <input type="password" id="password" name="password" class="form-input" placeholder="8자 이상, 영문, 숫자, 특수문자 포함" required>
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">
+                            <i class="fas fa-lock"></i>
+                            비밀번호 확인 *
+                        </label>
+                        <div class="password-input-container">
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="비밀번호를 다시 입력하세요" required>
+                            <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error" id="confirmPasswordError"></div>
+                    </div>
+                </div>
+
+                <!-- 프로필 정보 섹션 -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-id-badge"></i>
+                        프로필 정보
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="profileImage" class="form-label">
+                            <i class="fas fa-camera"></i>
+                            프로필 이미지
+                        </label>
+                        <div class="file-upload-container">
+                            <input type="file" id="profileImage" name="profileImage" class="file-input" accept="image/*">
+                            <label for="profileImage" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span class="file-upload-text">이미지 선택</span>
+                            </label>
+                            <div class="file-preview" id="filePreview" style="display: none;">
+                                <img id="previewImage" src="" alt="프로필 미리보기">
+                                <button type="button" class="remove-image" id="removeImage">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-error" id="profileImageError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio" class="form-label">
+                            <i class="fas fa-quote-left"></i>
+                            자기소개
+                        </label>
+                        <textarea id="bio" name="bio" class="form-textarea" placeholder="자신을 소개해주세요 (최대 300자)" maxlength="300"></textarea>
+                        <div class="char-counter">
+                            <span id="bioCharCount">0</span>/300
+                        </div>
+                        <div class="form-error" id="bioError"></div>
+                    </div>
+                </div>
+
+                <!-- 권한 및 약관 섹션 -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        권한 및 약관
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                <a href="#" class="terms-link">이용약관</a> 및 <a href="#" class="terms-link">개인정보처리방침</a>에 동의합니다 *
+                            </span>
+                        </label>
+                        <div class="form-error" id="termsAgreementError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="marketingAgreement" name="marketingAgreement">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                마케팅 정보 수신에 동의합니다 (선택)
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 제출 버튼 -->
+                <button type="submit" class="signup-btn" id="signupBtn">
+                    <span class="btn-text">회원가입</span>
+                    <div class="btn-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        가입 중...
+                    </div>
+                </button>
+
+                <div class="form-error" id="signupError"></div>
+            </form>
+
+            <!-- 로그인 링크 -->
+            <div class="login-link">
+                <p>이미 계정이 있으신가요? <a href="login.html" class="login-link-text">로그인</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/config.js"></script>
+    <script src="js/signup.js"></script>
+</body>
+
+</html>
