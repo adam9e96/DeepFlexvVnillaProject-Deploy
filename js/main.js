@@ -263,8 +263,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 상세 페이지가 아닐 때만 메인 페이지 전용 초기화 실행
   if (!isMovieDetailPage()) {
-    // TMDB API에서 영화 데이터 가져오기
-    API.fetchNowPlayingMovies();
+    // sessionStorage에서 선택된 카테고리 확인
+    const selectedCategory = sessionStorage.getItem("selectedCategory");
+    if (selectedCategory) {
+      // 저장된 카테고리 로드
+      sessionStorage.removeItem("selectedCategory");
+      setTimeout(() => {
+        API.handleCategoryChange(selectedCategory);
+        // 활성 상태 업데이트
+        const navLink = document.querySelector(
+          `.nav-link[data-category="${selectedCategory}"]`
+        );
+        if (navLink) {
+          document
+            .querySelectorAll(".nav-link")
+            .forEach((l) => l.parentElement.classList.remove("active"));
+          navLink.parentElement.classList.add("active");
+        }
+      }, 300);
+    } else {
+      // 기본: 현재 상영중인 영화 로드
+      API.fetchNowPlayingMovies();
+    }
 
     // 뷰 토글 버튼 업데이트
     UI.updateViewToggle();

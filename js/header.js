@@ -161,7 +161,7 @@ const Header = {
       if (existingHandler) {
         headerSidebarToggle.removeEventListener("click", existingHandler);
       }
-      
+
       // 새로운 이벤트 핸들러 생성
       const sidebarToggleHandler = function (e) {
         e.preventDefault();
@@ -170,7 +170,7 @@ const Header = {
           Sidebar.toggleSidebar();
         }
       };
-      
+
       headerSidebarToggle.addEventListener("click", sidebarToggleHandler);
       headerSidebarToggle._sidebarToggleHandler = sidebarToggleHandler; // 참조 저장
     }
@@ -207,13 +207,26 @@ const Header = {
           );
           e.preventDefault();
           const category = navLink.getAttribute("data-category");
-          API.handleCategoryChange(category);
 
-          // 활성 상태 업데이트
-          document
-            .querySelectorAll(".nav-link")
-            .forEach((l) => l.parentElement.classList.remove("active"));
-          navLink.parentElement.classList.add("active");
+          // 현재 페이지 확인
+          const currentPage =
+            window.location.pathname.split("/").pop() || "index.html";
+
+          // 상세 페이지에 있으면 메인 페이지로 이동
+          if (currentPage === "movie-detail.html") {
+            // 메인 페이지로 이동하면서 카테고리 정보를 sessionStorage에 저장
+            sessionStorage.setItem("selectedCategory", category);
+            window.location.href = "index.html";
+          } else {
+            // 메인 페이지에서는 카테고리 변경 처리
+            API.handleCategoryChange(category);
+
+            // 활성 상태 업데이트
+            document
+              .querySelectorAll(".nav-link")
+              .forEach((l) => l.parentElement.classList.remove("active"));
+            navLink.parentElement.classList.add("active");
+          }
         }
       });
     }
