@@ -75,15 +75,6 @@ body {
   min-height: 50px; /* 최소 높이 설정 */
 }
 
-.sidebar-header h3 {
-  font-size: var(--font-size-xl);
-  font-weight: bold;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .sidebar-toggle {
   display: none;
   background: none;
@@ -98,74 +89,6 @@ body {
 
 .sidebar-toggle:hover {
   background: var(--bg-tertiary);
-}
-
-/* 사이드바 네비게이션 */
-.sidebar-nav {
-  flex: 1;
-  padding: var(--spacing-md) 0;
-  min-height: 0; /* flex 아이템이 축소될 수 있도록 */
-}
-
-.sidebar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-item {
-  margin-bottom: var(--spacing-xs);
-}
-
-.sidebar-link {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md) var(--spacing-lg);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-  position: relative;
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  margin-right: var(--spacing-md);
-}
-
-.sidebar-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--color-primary);
-  transform: scaleY(0);
-  transition: transform var(--transition-fast);
-}
-
-.sidebar-link:hover {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  transform: translateX(5px);
-}
-
-.sidebar-item.active .sidebar-link {
-  background: var(--gradient-primary);
-  color: var(--text-primary);
-  box-shadow: 0 2px 8px var(--shadow-primary);
-}
-
-.sidebar-item.active .sidebar-link::before {
-  transform: scaleY(1);
-}
-
-.sidebar-link i {
-  font-size: var(--font-size-lg);
-  width: 20px;
-  text-align: center;
-}
-
-.sidebar-link span {
-  font-weight: 500;
 }
 
 /* 사이드바 필터 */
@@ -1194,7 +1117,7 @@ body {
   margin-bottom: var(--spacing-md);
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3;
+  /* line-clamp는 아직 표준이 아니므로 -webkit-line-clamp만 사용 */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1439,11 +1362,6 @@ body {
     display: block;
   }
 
-  .sidebar-overlay.active {
-    display: block;
-    opacity: 1;
-  }
-
   /* 모바일에서 헤더 왼쪽 영역 조정 */
   .header-left {
     gap: var(--spacing-sm);
@@ -1540,12 +1458,6 @@ body {
     flex-direction: column;
     text-align: center;
   }
-
-  /* 모바일 사이드바 추가 스타일 */
-  .sidebar-overlay.active {
-    display: block;
-    opacity: 1;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1604,6 +1516,7 @@ body {
 }
 
 /* 스크롤바 스타일링 */
+/* Webkit 브라우저 전용 (Chrome, Safari, Edge) - Firefox에서는 무시됨 */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -1617,6 +1530,7 @@ body {
   border-radius: 4px;
 }
 
+/* Firefox에서는 ::-webkit-scrollbar-thumb:hover가 지원되지 않지만, Webkit 브라우저에서는 정상 작동 */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
 }

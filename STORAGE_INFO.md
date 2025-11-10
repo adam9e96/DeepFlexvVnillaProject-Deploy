@@ -157,14 +157,3 @@
 ### 관련 파일
 
 - `js/movie-detail.js`: 시청 목록 관리
-
----
-
-## 저장소 사용 현황 요약
-
-| 저장소 키       | 저장 위치                              | 데이터 타입 | 최대 개수/크기 | 만료 조건                                         |
-| --------------- | -------------------------------------- | ----------- | -------------- | ------------------------------------------------- |
-| `userData`      | localStorage<br>또는<br>sessionStorage | 객체        | -              | rememberMe=false: 24시간<br>rememberMe=true: 영구 |
-| `searchHistory` | localStorage                           | 문자열 배열 | 10개           | 영구 (수동 삭제)                                  |
-| `favorites`     | localStorage                           | 숫자 배열   | 제한 없음      | 영구 (수동 삭제)                                  |
-| `watchlist`     | localStorage                           | 숫자 배열   | 제한 없음      | 영구 (수동 삭제)                                  |

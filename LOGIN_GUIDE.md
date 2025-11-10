@@ -1,15 +1,13 @@
 # GeekFlex 로그인 가이드
 
----
-
 ## 로그인 페이지 접속
 
 1. 브라우저에서 `login.html` 파일을 열거나
-2. 메인 페이지(`index.html`)에서 헤더의 **로그인 버튼** 클릭
+2. 메인 페이지(`index.html`)에서 헤더의 로그인 버튼 클릭
 
 ---
 
-## 🔑 테스트 계정 (현재 사용 가능)
+## 테스트 계정
 
 | 이메일               | 비밀번호      | 설명        |
 | -------------------- | ------------- | ----------- |
@@ -66,21 +64,11 @@
 
 ### 테스트 계정 추가 방법
 
-`js/login.js` 파일의 `validCredentials` 객체에 계정 정보를 추가하면 됩니다:
+`js/login.js` 파일의 `validCredentials` 객체에 계정 정보를 추가
 
 ```javascript
 const validCredentials = {
   "admin@geekflex.com": "password123",
-  "user@geekflex.com": "user123",
-  "test@geekflex.com": "test123",
   "newuser@geekflex.com": "newpassword123", // 새 계정 추가
 };
-```
-
-### 로그인 정보 확인
-
-```javascript
-// 콘솔에서 확인
-console.log("localStorage:", localStorage.getItem("userData"));
-console.log("sessionStorage:", sessionStorage.getItem("userData"));
 ```
