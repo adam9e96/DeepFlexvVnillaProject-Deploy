@@ -188,7 +188,7 @@ GeekFlex는 **효율적인 리뷰 작성**과 **한국 특화 서비스**를 특
 
 **테스트 중복 계정** (현재 시뮬레이션):
 
-- `admin`, `user`, `test` (아이디)
+- `admin` (아이디)
 - `admin@geekflex.com`, `user@geekflex.com`, `test@geekflex.com` (이메일)
 
 ### ⌨️ 키보드 단축키

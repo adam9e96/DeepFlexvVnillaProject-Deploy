@@ -12,6 +12,24 @@
 </head>
 
 <body>
+    <!-- 검색 모달 -->
+    <div id="searchModal" class="modal">
+      <div class="modal-content">
+        <div class="search-header">
+          <h2>영화 검색</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="영화 제목, 감독, 배우로 검색..."
+          />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- 헤더 -->
     <div data-include-path="./assets/header.html"></div>
 
@@ -169,6 +187,8 @@
     <script src="js/config.js"></script>
     <script src="js/api.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/header.js"></script>
     <script src="js/main.js"></script>

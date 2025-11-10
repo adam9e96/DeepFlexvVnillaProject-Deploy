@@ -209,6 +209,18 @@ const Search = {
       DOM.searchModal.style.display = "block";
       document.body.style.overflow = "hidden";
 
+      // 검색 모달이 열릴 때 사이드바 닫기
+      if (typeof Sidebar !== "undefined") {
+        Sidebar.closeSidebar();
+      }
+
+      // 사이드바 오버레이 비활성화 (검색 모달이 열려있을 때)
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
+      if (sidebarOverlay) {
+        sidebarOverlay.classList.remove("active");
+        sidebarOverlay.style.pointerEvents = "none";
+      }
+
       // 검색 입력 필드에 포커스
       if (DOM.searchInput) {
         DOM.searchInput.focus();
@@ -233,6 +245,24 @@ const Search = {
       if (DOM.searchResults) {
         DOM.searchResults.innerHTML = "";
       }
+
+      // 사이드바 오버레이 포인터 이벤트 복원
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
+      if (sidebarOverlay) {
+        sidebarOverlay.style.pointerEvents = "";
+        sidebarOverlay.style.display = ""; // display 속성 복원
+      }
+
+      // 사이드바 및 헤더 이벤트 리스너 재설정 (검색 모달 닫은 후)
+      // 약간의 지연을 두어 DOM 업데이트 완료 후 실행
+      setTimeout(() => {
+        if (typeof Sidebar !== "undefined") {
+          Sidebar.setupSidebarEventListeners();
+        }
+        if (typeof Header !== "undefined" && Header.setupHeaderEventListeners) {
+          Header.setupHeaderEventListeners();
+        }
+      }, 150);
 
       document.body.style.overflow = "auto";
     }

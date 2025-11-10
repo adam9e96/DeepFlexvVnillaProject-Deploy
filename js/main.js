@@ -200,6 +200,14 @@ const ApiKeyModal = {
   },
 };
 
+// 현재 페이지가 상세 페이지인지 확인
+function isMovieDetailPage() {
+  return (
+    window.location.pathname.includes("movie-detail.html") ||
+    document.querySelector(".movie-detail-main") !== null
+  );
+}
+
 // 초기화
 document.addEventListener("DOMContentLoaded", function () {
   // API 키 모달 초기화
@@ -233,13 +241,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // 윈도우 리사이즈 시 메인 컨텐츠 영역 조정
   window.addEventListener("resize", updateMainMargin);
 
-  // TMDB API에서 영화 데이터 가져오기
-  API.fetchNowPlayingMovies();
+  // 상세 페이지가 아닐 때만 메인 페이지 전용 초기화 실행
+  if (!isMovieDetailPage()) {
+    // TMDB API에서 영화 데이터 가져오기
+    API.fetchNowPlayingMovies();
 
-  // 뷰 토글 버튼 업데이트
-  UI.updateViewToggle();
+    // 뷰 토글 버튼 업데이트
+    UI.updateViewToggle();
+  }
 
-  // 이벤트 리스너 초기화
+  // 이벤트 리스너 초기화 (모든 페이지에서 필요)
   initializeEventListeners();
 });
 

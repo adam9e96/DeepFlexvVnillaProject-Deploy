@@ -153,13 +153,26 @@ const Header = {
       });
     }
 
-    // 헤더 사이드바 토글 버튼
+    // 헤더 사이드바 토글 버튼 - 중복 방지를 위해 기존 리스너 제거 후 추가
     const headerSidebarToggle = document.getElementById("headerSidebarToggle");
     if (headerSidebarToggle) {
-      headerSidebarToggle.addEventListener("click", function (e) {
+      // 기존 이벤트 리스너 제거
+      const existingHandler = headerSidebarToggle._sidebarToggleHandler;
+      if (existingHandler) {
+        headerSidebarToggle.removeEventListener("click", existingHandler);
+      }
+      
+      // 새로운 이벤트 핸들러 생성
+      const sidebarToggleHandler = function (e) {
         e.preventDefault();
-        Sidebar.toggleSidebar();
-      });
+        e.stopPropagation();
+        if (typeof Sidebar !== "undefined") {
+          Sidebar.toggleSidebar();
+        }
+      };
+      
+      headerSidebarToggle.addEventListener("click", sidebarToggleHandler);
+      headerSidebarToggle._sidebarToggleHandler = sidebarToggleHandler; // 참조 저장
     }
 
     // 로고 배너 클릭 - 메인 페이지로 이동

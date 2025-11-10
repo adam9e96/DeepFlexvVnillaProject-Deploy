@@ -494,7 +494,7 @@ body {
 
 .nav-item.active .nav-link {
   color: var(--text-primary);
-  background: var(--gradient-primary);
+  background: var(--color-primary);
   box-shadow: 0 5px 15px var(--shadow-secondary-accent);
 }
 
@@ -581,7 +581,7 @@ body {
 }
 
 .search-btn {
-  background: var(--gradient-primary);
+  background: var(--color-primary);
   border: none;
   color: var(--text-primary);
   padding: 0.75rem var(--spacing-lg);
@@ -595,6 +595,7 @@ body {
 }
 
 .search-btn:hover {
+  background: var(--color-secondary);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px var(--shadow-accent);
 }
@@ -712,7 +713,7 @@ body {
 
 /* 로그인 버튼 */
 .login-btn {
-  background: var(--gradient-primary);
+  background: var(--color-primary);
   border: none;
   color: var(--text-primary);
   padding: 0.75rem var(--spacing-lg);
@@ -727,6 +728,7 @@ body {
 }
 
 .login-btn:hover {
+  background: var(--color-secondary);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px var(--shadow-accent);
 }

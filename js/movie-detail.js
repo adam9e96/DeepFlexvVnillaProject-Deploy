@@ -336,6 +336,18 @@ const MovieDetail = {
 document.addEventListener('DOMContentLoaded', () => {
     // HTML include가 완료될 때까지 대기
     setTimeout(() => {
+        // 헤더와 검색 기능 초기화
+        if (typeof Header !== 'undefined') {
+            Header.initialize();
+        }
+        if (typeof Search !== 'undefined') {
+            Search.setupSearchEventListeners();
+        }
+        if (typeof Sidebar !== 'undefined') {
+            Sidebar.setupSidebarEventListeners();
+        }
+        
+        // 영화 상세 정보 초기화
         MovieDetail.init();
     }, 500);
 });
