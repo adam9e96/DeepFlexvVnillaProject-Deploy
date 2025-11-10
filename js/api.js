@@ -1,4 +1,4 @@
-// TMDB API 관련 함수들
+// TMDB API 관련 함수 모음
 
 // API 네임스페이스
 const API = {
@@ -10,6 +10,7 @@ const API = {
     UI.showLoading();
 
     try {
+      // 가장 기본적인 영화 데이터 가져오기
       const response = await fetch(
         `${CONFIG.TMDB_BASE_URL}/movie/now_playing?language=ko&page=1&api_key=${CONFIG.TMDB_API_KEY}`
       );
@@ -20,7 +21,7 @@ const API = {
 
       const data = await response.json();
 
-      // TMDB 데이터를 우리 형식으로 변환
+      // TMDB 데이터를 프로젝트구조에 맞게 변환
       STATE.moviesData = data.results.map((movie) => ({
         id: movie.id,
         title: movie.title,

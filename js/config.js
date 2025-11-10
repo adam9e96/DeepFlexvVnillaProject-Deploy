@@ -1,4 +1,5 @@
 // 설정 및 상수
+// CONFIG에서 페이지 설정, 검색 설정 등을 할 수 있다.
 const CONFIG = {
   // TMDB API 설정
   TMDB_API_KEY: localStorage.getItem("tmdb_api_key") || "", // localStorage에서 API 키 읽기
@@ -41,6 +42,7 @@ const GENRE_MAP = {
 };
 
 // 전역 상태
+// API 요청시 값을 담을 상태 객체
 const STATE = {
   moviesData: [],
   filteredMovies: [],
