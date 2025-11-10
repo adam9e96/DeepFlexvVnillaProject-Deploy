@@ -87,9 +87,9 @@ const Search = {
             `;
 
       resultItem.addEventListener("click", () => {
-        // 검색 결과 클릭 시 해당 영화를 메인 리스트에 추가하고 스크롤
+        // 검색 결과 클릭 시 영화 상세 페이지로 이동
         Search.closeSearchModal();
-        Search.addMovieToMainList(movie);
+        window.location.href = `movie-detail.html?id=${movie.id}`;
       });
 
       searchResults.appendChild(resultItem);
