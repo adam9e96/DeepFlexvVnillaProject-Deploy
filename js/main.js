@@ -225,10 +225,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // HTML include 기능
   includeHTML();
 
-  // 사이드바 상태 변경 감지
+  // 사이드바 상태 변경 감지 및 모바일 초기화
   setTimeout(() => {
     const sidebar = document.getElementById("sidebar");
     if (sidebar) {
+      // 모바일 환경에서 사이드바 기본적으로 닫기
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile) {
+        sidebar.classList.add("closed");
+      }
+
       const sidebarObserver = new MutationObserver(updateMainMargin);
       sidebarObserver.observe(sidebar, {
         attributes: true,
@@ -238,8 +244,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 500);
 
-  // 윈도우 리사이즈 시 메인 컨텐츠 영역 조정
-  window.addEventListener("resize", updateMainMargin);
+  // 윈도우 리사이즈 시 메인 컨텐츠 영역 조정 및 모바일 사이드바 상태 관리
+  window.addEventListener("resize", () => {
+    updateMainMargin();
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) {
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile && !sidebar.classList.contains("closed")) {
+        // 모바일로 전환될 때 사이드바가 열려있으면 닫기
+        const sidebarOverlay = document.getElementById("sidebarOverlay");
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.remove("active");
+        }
+        sidebar.classList.add("closed");
+      }
+    }
+  });
 
   // 상세 페이지가 아닐 때만 메인 페이지 전용 초기화 실행
   if (!isMovieDetailPage()) {
